@@ -5,7 +5,7 @@ typedef long long ll;
 typedef double D;
 #define INF 1000000000
 #define NeedForSpeed ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);
-const int N = 1e5 + 5;
+const int N = 1e5 + 9;
 int seg[4*N],a[N],lazy[4*N];
 void build(int ind , int low , int high){
     if(low == high){
