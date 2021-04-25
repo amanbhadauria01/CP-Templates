@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-typedef long long int ll;
+typedef long long int int;
 #define mod 1000000007
 const int N = 1000010;
 
@@ -11,7 +11,7 @@ void update(int i , int add){
         i += (i&(-i));
     }
 }
-int sum(ll i){
+int sum(int i){
     int s = 0;
     while(i>0){
         s+= fen[i];
@@ -34,7 +34,7 @@ int find(int k) {
 }
 
 
-ll range(ll l, ll r){
+int range(int l, int r){
     return sum(r)-sum(l-1);
 }
 // calculates lowerbound index for prefix sum array , smjhe naa ??
@@ -86,8 +86,8 @@ void go()
 
 signed main()
 {
-    cin.tie(NULL), ios_base::sync_with_stdio(false), cout.tie(NULL);
-    ll t;
+    cin.tie(NUint), ios_base::sync_with_stdio(false), cout.tie(NUint);
+    int t;
     cin >> t;
     while(t--)
     go();
