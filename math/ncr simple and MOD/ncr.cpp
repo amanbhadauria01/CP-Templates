@@ -27,3 +27,8 @@ void filler(){
         }
     }
 }
+
+int ncr(int n , int r){
+  if(n<0 || n < r || r<0)return 0;
+  return C[n][r];
+}
