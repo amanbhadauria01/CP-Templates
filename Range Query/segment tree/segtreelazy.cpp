@@ -7,6 +7,13 @@ typedef double D;
 #define NeedForSpeed ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);
 const int N = 1e5 + 9;
 int seg[4*N],a[N],lazy[4*N];
+
+// this segment tree adds values for a range and finds max of a range
+
+int fun(int a, int b){
+    return max(a,b);
+}
+
 void build(int ind , int low , int high){
     if(low == high){
          seg[ind] = a[low];
@@ -15,7 +22,7 @@ void build(int ind , int low , int high){
     int mid = (low+high)/2;
     build(2*ind+1,low,mid);
     build(2*ind+2,mid+1,high);
-    seg[ind] = max(seg[2*ind+1],seg[2*ind+2]);
+    seg[ind] = fun(seg[2*ind+1],seg[2*ind+2]);
 }
 
 void rangeUpdate(int ind, int low , int high , int l , int r , int val){
@@ -42,7 +49,7 @@ void rangeUpdate(int ind, int low , int high , int l , int r , int val){
     int mid = (low + high)/2;
     rangeUpdate(2*ind+1,low,mid,l,r,val);
     rangeUpdate(2*ind+2,mid+1,high,l,r,val);
-    seg[ind] = seg[2*ind+1] + seg[2*ind+2];
+    seg[ind] = fun(seg[2*ind+1],seg[2*ind+2]);
 }
 
 int querylazy(int ind , int low, int high, int l , int r ){
@@ -60,6 +67,6 @@ int querylazy(int ind , int low, int high, int l , int r ){
     if(l <= low && high <= r) return seg[ind];
     // rest
     int mid = (low+high)/2;
-    return querylazy(2*ind+1,low,mid,l,r) + querylazy(2*ind+2,mid+1,high,l,r);
+    return fun(querylazy(2*ind+1,low,mid,l,r),querylazy(2*ind+2,mid+1,high,l,r));
 }
 
