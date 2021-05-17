@@ -1,11 +1,13 @@
-int power(int a, int b, int mod){ 
-	int x = 1, y = a; 
-	while (b > 0){ 
-		if (b%2){ 
-			x = (x*y)%mod; 
-		} 
-		y = (y*y)%mod; 
-		b /= 2; 
-	} 
-	return x%mod; 
+int power(int a, int b, int m)
+{
+	int ans=1;
+	a %= m; a +=m; a %= m;
+	while(b)
+	{
+		if(b&1)
+			ans=(ans*a)%m;
+		b/=2;
+		a=(a*a)%m;
+	}
+	return ans;
 }
