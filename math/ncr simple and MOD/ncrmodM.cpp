@@ -1,16 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-#define int long long 
-#define D long double
-#define FIO ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);
-const int MOD = 1000000007;
-#define endl '\n'
-#define fi first
-#define se second
-
-const int INF = 1e12;
-const int N = 1e6 + 10;
-
 int fact[N],ifact[N];
 
 int power(int a, int b){ 
@@ -48,19 +35,4 @@ void filler(){
         ifact[i] %= MOD; ifact[i] += MOD; ifact[i] %= MOD;
     } 
     
-}
-
-void solve(){
-    filler();
-    cout << power(2,MOD-2) << endl ;
-    cout << ifact[2] << endl; 
-}
-
-signed main() {
-        FIO
-        int t = 1;
-        // cin >> t;
-        while(t--){
-              solve();
-        }
 }

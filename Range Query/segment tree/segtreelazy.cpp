@@ -15,6 +15,7 @@ int fun(int a, int b){
 }
 
 void build(int ind , int low , int high){
+    if(low>high)return ;
     if(low == high){
          seg[ind] = a[low];
          return;
@@ -26,6 +27,7 @@ void build(int ind , int low , int high){
 }
 
 void rangeUpdate(int ind, int low , int high , int l , int r , int val){
+    if(low>high)return ;
     if(lazy[ind]!=0){
         seg[ind] += lazy[ind];
         if(low != high){
@@ -53,6 +55,7 @@ void rangeUpdate(int ind, int low , int high , int l , int r , int val){
 }
 
 int querylazy(int ind , int low, int high, int l , int r ){
+    if(low>high)return 0;
     if(lazy[ind]!=0){
         seg[ind] += lazy[ind];
         if(low != high){
@@ -70,3 +73,12 @@ int querylazy(int ind , int low, int high, int l , int r ){
     return fun(querylazy(2*ind+1,low,mid,l,r),querylazy(2*ind+2,mid+1,high,l,r));
 }
 
+void update(int l , int r , int val){
+    assert(n-1>=0);
+    rangeUpdate(0,0,n-1,l,r,val);
+}
+
+int query(int l , int r){
+    assert(n-1>=0);
+    return querylazy(0,0,n-1,l,r);
+}
