@@ -1,0 +1,40 @@
+// Sum of digits of each number from 1 to N
+
+// 329
+int summ(int x){
+    if(x==0LL)return 0;
+    assert(x>0LL);
+    // x < 10, just return sum from 1 to x.
+    if(x<10LL){
+        return (x*(x+1LL))/2LL;
+    }
+    int deg = 1LL;
+    // e.g. x=329 , x/1000 = 0, deg = 100
+    int p = 0;
+    while(x/(deg*10LL) > 0LL){
+        deg *= 10LL;
+        p += 1;
+    }
+    // msd = 3
+    int msd = x/deg;
+    // y = 99
+    int y = deg-1LL;
+    // (0-299 == 0-99*3 + 1*100 + 2*100) + 3*(29+1) + summ(29)
+    return msd*(a[p]) + ((msd*(msd-1LL))/2LL)*deg + msd*(x-msd*deg + 1LL) + summ(x-msd*deg);
+}
+
+void go()
+{
+    // 0-99
+    // a[1] = 45 
+    // a[2] = a[1]*10 + (1+2+3..9)*(10)
+    // a[3] = a[2]*10 + (0+1)*100
+    a[1] = 45;
+    int d = 10;
+    for(int i = 2 ; i < 16; i++){
+      a[i] = a[i-1]*10LL + 45LL*d;
+      d *= 10LL;
+    }
+
+    cout << summ(n) << endl;
+}
